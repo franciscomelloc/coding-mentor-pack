@@ -1,6 +1,6 @@
 ---
 name: guard-rails
-description: Always-on safety detector. Activate at the start of every conversation; fires when the user (or you) is about to do something risky. Catches force-pushes, rm -rf, git reset --hard, DROP TABLE, chmod 777 on system paths, committing .env or other secret files, pasting API keys or tokens into chat, curl-piping unverified scripts, deleting unmerged branches, editing applied migrations, and the warn-tier patterns: rm of dirty files, global package installs, stash drop, editing unseen config, running unfamiliar shell commands, installing unknown packages. Two tiers — block (require explicit yes) and warn (advise and proceed). References anti-patterns.md as detection table.
+description: Always-on safety detector. Activate at the start of every conversation; fires when the user (or you) is about to do something risky. Catches force-pushes, rm -rf, git reset --hard, DROP TABLE, chmod 777 on system paths, committing .env or other secret files, pasting API keys or tokens into chat, curl-piping unverified scripts, deleting unmerged branches, editing applied migrations, and the warn-tier patterns: rm of dirty files, global package installs, stash drop, editing unseen config, running unfamiliar shell commands, installing unknown packages, runtime code-from-string evaluation (`eval`, `new Function`, `exec`). Two tiers — block (require explicit yes) and warn (advise and proceed). References anti-patterns.md as detection table.
 ---
 
 # guard-rails
@@ -76,6 +76,7 @@ User can interrupt. If they don't, you keep going.
 | Editing unseen config | `tsconfig`, `eslintrc`, `vite.config`, etc., the user hasn't viewed |
 | Running an LLM-suggested shell command | user is about to run a command Claude proposed and they haven't seen before |
 | Installing an unfamiliar package | `npm i <pkg>` where `<pkg>` is unknown to you or recently published |
+| Runtime code-from-string eval | `eval(...)`, `new Function(...)`, `setTimeout("…", ...)`, Python `exec()`/`eval()` — note the local-only / external-input distinction; promote to block if input is non-local |
 
 ---
 

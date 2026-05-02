@@ -1,6 +1,6 @@
 ---
 name: using-git
-description: First-encounter skill for git. Activate when git appears for the first time in a conversation and the user shows uncertainty — asks what a term means, runs a git command without checking the result, makes a confused statement about version control, or has clearly never used git before. Triggers on first appearance of `git`, "commit", "branch", "merge", "rebase", "diff", "stash", "tag", "remote", "checkout", "HEAD", combined with confusion signals. Teaches the mental model first (snapshot model, working dir / staging / repo, branches as parallel timelines), defines the core terms via glossary references, always shows the undo path, and stops when the user demonstrates they hold the model.
+description: First-encounter skill for git. Activate on first appearance of any git concept in a conversation — `git`, "commit", "branch", "merge", "rebase", "diff", "stash", "tag", "remote", "checkout", "HEAD", "version control" — with a soft-teach (one-line gloss + glossary pointer + first-undo path). Deepen into the full mental model (snapshot model, working dir / staging / repo, branches as parallel timelines) if the user also shows a confusion signal: asks what a term means, runs a git command and asks "did that work?", describes a problem in non-git terms, contradicts the model. Defer / stay quiet if the user demonstrates fluency from the start.
 ---
 
 # using-git
@@ -13,11 +13,20 @@ This skill is **about the model**. Specific git operations during the session al
 
 ## Triggers
 
-- **First appearance phrases:** `git`, `commit`, `branch`, `merge`, `rebase`, `diff`, `stash`, `tag`, `remote`, `checkout`, `HEAD`, "version control", "I want to track changes".
-- **Confusion signals:** user asks what a term means; user runs a git command and asks "did that work?"; user says "I'm new to git"; user describes a problem in non-git terms ("I want to save my place"); user makes a statement that contradicts the model ("does git delete the file?").
-- **Context clues:** repo is fresh (no `.git` yet), or repo exists but conversation has never touched git.
+Two-stage activation. The skill always responds to first appearance, but how much it teaches depends on what else it sees.
 
-If the user is fluent ("rebase the feature branch onto main, force-with-lease"), this skill stays quiet.
+**Soft activate on first appearance** (one-line gloss + glossary pointer + first-undo path):
+- `git`, `commit`, `branch`, `merge`, `rebase`, `diff`, `stash`, `tag`, `remote`, `checkout`, `HEAD`, "version control", "I want to track changes".
+- Repo is fresh (no `.git` yet), or repo exists but conversation has never touched git.
+
+**Deepen into the full model** (photo-album metaphor, three places a file can live, branches as parallel chains) when, in addition to first appearance, you see a confusion signal:
+- User asks what a term means.
+- User runs a git command and asks "did that work?".
+- User says "I'm new to git".
+- User describes a problem in non-git terms ("I want to save my place").
+- User makes a statement that contradicts the model ("does git delete the file?").
+
+**Defer / stay quiet** if the user demonstrates fluency from the start ("rebase the feature branch onto main, force-with-lease"). Drop directly to the requested move with no model overhead.
 
 ---
 

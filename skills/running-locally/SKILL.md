@@ -1,6 +1,6 @@
 ---
 name: running-locally
-description: First-encounter skill for runtimes, processes, dev servers, ports, and "run on my machine." Activate the first time `npm run dev`, `npm start`, `python app.py`, `bun dev`, `localhost:3000`, "the server", "port", "EADDRINUSE", or "can my friend see this" appears, and the user is uncertain. Triggers on "how do I run this", "the dev server", "what's localhost", "what port", "the server crashed", "EADDRINUSE", `Address already in use`, "Ctrl+C", "hot reload", "can someone else access this URL". Teaches the runtime in a paragraph (Node, Python, Bun — what's installed and what version matters), the process model (a long-running thing you stop with Ctrl+C), localhost ("only your machine can see this"), port collisions, and hot reload.
+description: First-encounter skill for runtimes, processes, dev servers, ports, and "run on my machine." Activate on first appearance of any local-run concept — `npm run dev`, `npm start`, `python app.py`, `bun dev`, `localhost:3000`, "the server", "port" — with a soft-teach (one-line "long-running process listening on a port" + the URL to open). Deepen into the full model (runtime, process, localhost, ports, hot reload) if the user shows a confusion signal: asks "how do I run this", "what's localhost", "what port", "can my friend see this URL", hits `EADDRINUSE` / `Address already in use`, says the page is blank or the server "crashed". Defer / stay quiet if the user is already fluent.
 ---
 
 # running-locally
@@ -11,9 +11,16 @@ The user is meeting the dev-server world for the first time. The mental model is
 
 ## Triggers
 
-- **First appearance:** `npm run dev`, `npm start`, `python app.py`, `flask run`, `uvicorn`, `bun dev`, `astro dev`, `next dev`, `localhost:3000`, `127.0.0.1:5173`, `http://localhost`.
-- **Phrases:** "how do I run this", "what's localhost", "what's the dev server", "what port", "Ctrl+C", "hot reload", "is this online?", "can my friend see this?", "the page is blank", "it says it's running but nothing happens".
-- **Errors:** `EADDRINUSE`, `Address already in use`, `port already in use`, `cannot bind to port`, `Connection refused` to localhost.
+Two-stage activation.
+
+**Soft activate on first appearance** (one-line "long-running process listening on a port" + the URL to open + Ctrl+C to stop):
+- `npm run dev`, `npm start`, `python app.py`, `flask run`, `uvicorn`, `bun dev`, `astro dev`, `next dev`, `localhost:3000`, `127.0.0.1:5173`, `http://localhost`.
+
+**Deepen into the full model** (runtime, process, localhost, ports, hot reload) when you see a confusion signal:
+- Phrases: "how do I run this", "what's localhost", "what's the dev server", "what port", "Ctrl+C", "hot reload", "is this online?", "can my friend see this?", "the page is blank", "it says it's running but nothing happens".
+- Errors: `EADDRINUSE`, `Address already in use`, `port already in use`, `cannot bind to port`, `Connection refused` to localhost.
+
+**Defer / stay quiet** if the user is fluent ("bun dev, then localhost:4321"). Start the server and stop talking.
 
 ---
 

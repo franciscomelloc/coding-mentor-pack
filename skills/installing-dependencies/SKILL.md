@@ -1,6 +1,6 @@
 ---
 name: installing-dependencies
-description: First-encounter skill for package managers, manifests, lockfiles, and dependency installs. Activate the first time `npm install`, `pip install`, `bun install`, `yarn`, `cargo`, `requirements.txt`, `package.json`, `pyproject.toml`, `Gemfile`, or "install" appears in the context, and the user is uncertain. Triggers on `Module not found`, `ImportError`, `ModuleNotFoundError`, "what's package.json", "what does install do", "where do these go", "do I need to commit node_modules", first appearance of `^` or `~` in version strings. Teaches what a package manager is, the manifest-vs-lockfile split, why `node_modules` / `venv` is huge and gitignored, project-local vs global installs, and semver basics. Picks a recommended tool per stack.
+description: First-encounter skill for package managers, manifests, lockfiles, and dependency installs. Activate on first appearance of any package-manager concept — `npm install`, `pip install`, `bun install`, `yarn`, `cargo`, `requirements.txt`, `package.json`, `pyproject.toml`, `Gemfile` — with a soft-teach (the relevant single idea: manifest vs lockfile, or what `node_modules` is, etc.). Deepen into the full model (all five ideas — what a package manager does, manifest vs lockfile, where packages live, project-local vs global, semver) if the user shows a confusion signal: hits `Module not found` / `ImportError`, asks "what's package.json", "what does install do", "do I commit node_modules", "what's `^1.2.3`". Defer / stay quiet if the user is already fluent.
 ---
 
 # installing-dependencies
@@ -19,10 +19,17 @@ Don't dump all five at once. Let the user's actual task (running `npm install`, 
 
 ## Triggers
 
-- **First appearance:** `npm install`, `npm i`, `pip install`, `bun install`, `bun add`, `yarn`, `yarn add`, `pnpm`, `cargo add`, `gem install`, `bundle install`, `requirements.txt`, `package.json`, `pyproject.toml`, `poetry`, `Gemfile`.
-- **Errors:** `Module not found`, `Cannot find module`, `ImportError`, `ModuleNotFoundError`, `Could not find a version that satisfies`, `npm ERR! ENOENT package.json`.
-- **Phrases:** "what's package.json", "what does install do", "where do these go", "do I commit node_modules", "what's `^1.2.3`", "the lockfile changed", "why is `package-lock.json` so big".
-- **Context clues:** repo has a manifest but no `node_modules`/`venv`; user has cloned and is running before installing.
+Two-stage activation.
+
+**Soft activate on first appearance** (lead with the single idea the user's task needs — manifest vs lockfile, `node_modules` is gitignored, etc.):
+- `npm install`, `npm i`, `pip install`, `bun install`, `bun add`, `yarn`, `yarn add`, `pnpm`, `cargo add`, `gem install`, `bundle install`, `requirements.txt`, `package.json`, `pyproject.toml`, `poetry`, `Gemfile`.
+- Repo has a manifest but no `node_modules`/`venv`; user has cloned and is running before installing.
+
+**Deepen into the full model** (all five ideas in order, paced to the situation) when you see a confusion signal:
+- Errors: `Module not found`, `Cannot find module`, `ImportError`, `ModuleNotFoundError`, `Could not find a version that satisfies`, `npm ERR! ENOENT package.json`.
+- Phrases: "what's package.json", "what does install do", "where do these go", "do I commit node_modules", "what's `^1.2.3`", "the lockfile changed", "why is `package-lock.json` so big".
+
+**Defer / stay quiet** if the user is fluent ("bun add zod"). Run the install and move on.
 
 ---
 

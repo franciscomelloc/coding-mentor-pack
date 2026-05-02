@@ -1,6 +1,6 @@
 {
   "name": "coding-mentor-pack",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Twelve Claude Code skills that turn Claude into a patient teacher for absolute beginners. Recommends instead of asking open-ended, defines jargon on first use, paces one concept per turn, ends every turn with What we did / What it means / What's next. Two always-on skills (tonal stance + safety detector), five reactive skills (orientation, error decode, recap, unstuck), five first-encounter skills (git, GitHub, env vars, dependencies, running locally). Auto-obsolescent: each skill has a graduation signal and softens once the user holds the concept.",
   "author": {
     "name": "Francisco Mello Castro",

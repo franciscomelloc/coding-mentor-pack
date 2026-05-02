@@ -98,6 +98,12 @@ When `safe-mode` is active, all entries effectively become `block`-equivalent �
 **Concern:** typosquatting, malicious packages.
 **Note:** "I haven't seen `<pkg>` before — let me check it's the package you mean. Did you mean `<similarly-named-popular-pkg>`?"
 
+### 17. Runtime code-from-string evaluation
+**Trigger:** `eval(<expr>)`, `new Function(<expr>)`, `setTimeout(<string>, ...)`, `setInterval(<string>, ...)`, Python `exec()`/`eval()`, or any pattern that turns a string into executable code.
+**Concern:** if the string ever comes from user input, a URL, a file, or any external source, it's arbitrary code execution. Even local-only "I'll just eval this expression" tends to grow into accepting input later, and the risk is silent — the code looks fine until someone passes the wrong thing.
+**Note:** "Heads up — `eval`/`new Function` evaluates whatever string you pass it as code. Fine for a throwaway local demo where the input is hardcoded; risky the moment any of it comes from the user, a URL, or a file. Safer for math: a tiny parser, or a library like [`expr-eval`](https://www.npmjs.com/package/expr-eval) / [`mathjs`](https://www.npmjs.com/package/mathjs). Continuing — but flagging so you know."
+**Promote to block** if the input source is non-local in this same context (URL param, fetch result, file the user didn't write, form input).
+
 ---
 
 ## Adding entries

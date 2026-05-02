@@ -1,6 +1,6 @@
 ---
 name: using-env-vars
-description: First-encounter skill for environment variables and secrets. Activate the first time `.env`, `process.env`, `os.environ`, `export FOO=`, "API key", "secret", "config", "token", or "password" appears in code or context, and the user is uncertain. Triggers on first sight of a `.env` file, a code reference to env vars (`process.env.X`, `os.environ["X"]`, `Deno.env.get("X")`), the user asking "where do I put my API key", "how do I store a secret", "what's a .env file", confusion about why a key shouldn't be in code, or after `guard-rails` flags a pasted secret. Teaches why env vars exist (separate config from code, keep secrets out of git), the `.env` lifecycle (create, gitignore, never commit), per-platform loading (Node, Python, shell), and the dev-vs-prod distinction.
+description: First-encounter skill for environment variables and secrets. Activate on first appearance of any env-var concept — `.env`, `process.env`, `os.environ`, `Deno.env.get`, `import.meta.env`, `export FOO=`, "API key", "secret", "config", "token", or "password" — with a soft-teach (one-line "secrets and config don't belong in code" + glossary pointer). Deepen into the full model (`.env` lifecycle, gitignore-first ordering, per-platform loading, dev vs prod) if the user shows a confusion signal: asks "where do I put my API key", "what's a `.env` file", "is it safe to put this in code", or after `guard-rails` flags a pasted secret. Defer / stay quiet if the user is already env-var-fluent.
 ---
 
 # using-env-vars
@@ -13,10 +13,18 @@ If the user is here because they pasted a secret into chat, **`guard-rails` runs
 
 ## Triggers
 
-- **First appearance:** `.env`, `.env.local`, `process.env.X`, `os.environ["X"]`, `Deno.env.get("X")`, `import.meta.env.X`, `export FOO=…`, `dotenv`, `python-dotenv`.
-- **Phrases:** "where do I put my API key", "how do I store a secret", "what's a `.env` file", "is it safe to put this in the code", "config file", "where does this token go".
-- **Behavioral:** user is about to hardcode a key in source; user is reading a README that says "set `FOO_API_KEY` in your environment" and asks how.
-- **Handoff from `guard-rails`:** user pasted a key and we redirect to here for the proper home.
+Two-stage activation.
+
+**Soft activate on first appearance** (one-line "secrets and config don't belong in code" + glossary pointer, then handle the move at hand):
+- `.env`, `.env.local`, `process.env.X`, `os.environ["X"]`, `Deno.env.get("X")`, `import.meta.env.X`, `export FOO=…`, `dotenv`, `python-dotenv`.
+
+**Deepen into the full model** (the two ideas — why env vars exist, `.env` file lifecycle — plus per-platform loading) when you see a confusion signal:
+- Phrases: "where do I put my API key", "how do I store a secret", "what's a `.env` file", "is it safe to put this in the code", "config file", "where does this token go".
+- Behavioral: user is about to hardcode a key in source; user is reading a README that says "set `FOO_API_KEY` in your environment" and asks how.
+
+**Always deepen** on handoff from `guard-rails` (user pasted a secret and we redirect here for the proper home) — confusion is presumed.
+
+**Defer / stay quiet** if the user is fluent ("add `STRIPE_KEY` to .env"). Drop straight to the move.
 
 ---
 

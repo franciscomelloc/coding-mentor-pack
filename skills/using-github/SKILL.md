@@ -1,6 +1,6 @@
 ---
 name: using-github
-description: First-encounter skill for GitHub — distinct from git. Activate the first time GitHub appears and the user is uncertain — asks how to put code on GitHub, asks what a fork or PR is, gets prompted for credentials and is confused, sees an SSH error, or has clearly never used GitHub before. Triggers on first appearance of github.com URLs, "GitHub", "fork", "PR", "pull request", "remote", "origin", "push to GitHub", `gh` CLI, SSH key prompts, "Permission denied (publickey)", "fatal: Authentication failed". Teaches the split (git is local version control; GitHub is one host that serves it), the auth path (HTTPS+PAT recommended), the remote model, fork vs clone vs branch, and the PR lifecycle.
+description: First-encounter skill for GitHub — distinct from git. Activate on first appearance of any GitHub concept — github.com URLs, "GitHub", "fork", "PR", "pull request", "remote", "origin", "push to GitHub", `gh` CLI — with a soft-teach (the git/GitHub split in one line + the relevant next move). Deepen into the full model (auth paths, remote model, fork vs clone vs branch, PR lifecycle) if the user shows a confusion signal: asks how to put code on GitHub, asks what a fork or PR is, gets prompted for credentials and is confused, sees an SSH error ("Permission denied (publickey)", "fatal: Authentication failed"), pastes a github.com URL and asks what to do. Defer / stay quiet if the user is already GitHub-fluent.
 ---
 
 # using-github
@@ -13,9 +13,16 @@ When this clicks, everything else makes sense. When it doesn't, the user keeps a
 
 ## Triggers
 
-- **First appearance phrases:** `github.com/...` URL, "GitHub", "fork", "PR", "pull request", "open source", `gh` (the GitHub CLI), `origin`, `upstream`, "I want to put this on GitHub".
-- **Auth confusion:** prompt for username/password during git operation, `Permission denied (publickey)`, `fatal: Authentication failed`, repeated prompts after a failed attempt.
-- **Behavioral:** user pastes a github.com URL and asks what to do; user asks "is this on GitHub?" or "how do I put it on GitHub?"; user attempts `git push` to a fresh repo with no remote configured.
+Two-stage activation.
+
+**Soft activate on first appearance** (mention the git/GitHub split in one line, then handle the move at hand):
+- `github.com/...` URL, "GitHub", "fork", "PR", "pull request", "open source", `gh` (the GitHub CLI), `origin`, `upstream`, "I want to put this on GitHub".
+
+**Deepen into the full layer** (auth path picked, remote model, fork vs clone vs branch, PR lifecycle) when you see a confusion signal:
+- Auth confusion: prompt for username/password during git operation, `Permission denied (publickey)`, `fatal: Authentication failed`, repeated prompts after a failed attempt.
+- Behavioral: user pastes a github.com URL and asks what to do; user asks "is this on GitHub?" or "how do I put it on GitHub?"; user attempts `git push` to a fresh repo with no remote configured.
+
+**Defer / stay quiet** if the user is fluent ("open a PR from feature/x against main"). Drop straight to the operation.
 
 ---
 
