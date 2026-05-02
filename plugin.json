@@ -1,63 +1,40 @@
 {
   "name": "coding-mentor-pack",
   "version": "1.0.0",
-  "description": "A pack of Claude Code skills that turn Claude into a patient teacher for absolute beginners learning to program. Twelve skills covering tone, safety, orientation, error decoding, recap, unstuck-helping, and first-encounter teaching for git, GitHub, env vars, dependencies, and running locally. Auto-obsolescent: every skill has a graduation signal and softens when the user demonstrates they hold the concept.",
-  "license": "MIT",
+  "description": "Twelve Claude Code skills that turn Claude into a patient teacher for absolute beginners. Recommends instead of asking open-ended, defines jargon on first use, paces one concept per turn, ends every turn with What we did / What it means / What's next. Two always-on skills (tonal stance + safety detector), five reactive skills (orientation, error decode, recap, unstuck), five first-encounter skills (git, GitHub, env vars, dependencies, running locally). Auto-obsolescent: each skill has a graduation signal and softens once the user holds the concept.",
+  "author": {
+    "name": "Francisco Mello Castro",
+    "email": "fmc.franciscocastro@gmail.com",
+    "url": "https://franciscomelloc.com"
+  },
   "homepage": "https://github.com/franciscomelloc/coding-mentor-pack",
-  "skills": [
-    {
-      "name": "coding-mentor",
-      "path": "skills/coding-mentor/SKILL.md",
-      "alwaysOn": true
-    },
-    {
-      "name": "guard-rails",
-      "path": "skills/guard-rails/SKILL.md",
-      "alwaysOn": true
-    },
-    {
-      "name": "explain-this-project",
-      "path": "skills/explain-this-project/SKILL.md"
-    },
-    {
-      "name": "safe-mode",
-      "path": "skills/safe-mode/SKILL.md"
-    },
-    {
-      "name": "translate-the-error",
-      "path": "skills/translate-the-error/SKILL.md"
-    },
-    {
-      "name": "what-changed",
-      "path": "skills/what-changed/SKILL.md"
-    },
-    {
-      "name": "next-step",
-      "path": "skills/next-step/SKILL.md"
-    },
-    {
-      "name": "using-git",
-      "path": "skills/using-git/SKILL.md"
-    },
-    {
-      "name": "using-github",
-      "path": "skills/using-github/SKILL.md"
-    },
-    {
-      "name": "using-env-vars",
-      "path": "skills/using-env-vars/SKILL.md"
-    },
-    {
-      "name": "installing-dependencies",
-      "path": "skills/installing-dependencies/SKILL.md"
-    },
-    {
-      "name": "running-locally",
-      "path": "skills/running-locally/SKILL.md"
-    }
+  "repository": "https://github.com/franciscomelloc/coding-mentor-pack",
+  "license": "MIT",
+  "keywords": [
+    "mentoring",
+    "teaching",
+    "beginner",
+    "learning",
+    "education",
+    "coding-education",
+    "tutor",
+    "patient-teacher",
+    "git",
+    "github",
+    "claude-code"
   ],
-  "assets": [
-    "glossary.md",
-    "anti-patterns.md"
+  "skills": [
+    "skills/coding-mentor",
+    "skills/guard-rails",
+    "skills/explain-this-project",
+    "skills/safe-mode",
+    "skills/translate-the-error",
+    "skills/what-changed",
+    "skills/next-step",
+    "skills/using-git",
+    "skills/using-github",
+    "skills/using-env-vars",
+    "skills/installing-dependencies",
+    "skills/running-locally"
   ]
 }

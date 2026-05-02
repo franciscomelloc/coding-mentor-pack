@@ -36,26 +36,31 @@ Plus two shared assets:
 
 ## Install
 
-# Install instructions go here
+Three paths.
 
-(For now, two paths. Both work today; the marketplace path will be fleshed out as Claude Code's plugin tooling stabilizes.)
+**Path 1 — install via Claude Code plugins (recommended once approved on the marketplace):**
 
-**Path 1 — copy into your Claude Code skills directory:**
+Browse [claude.com/plugins](https://claude.com/plugins) or visit Claude Code's in-app plugin browser, find "coding-mentor-pack," click install. Skills auto-load on next session.
+
+(Submission status: under review by Anthropic at first publish; this README will be updated when listing goes live.)
+
+**Path 2 — local plugin from this repo:**
+
+```bash
+git clone https://github.com/franciscomelloc/coding-mentor-pack.git
+claude --plugin-dir=./coding-mentor-pack
+```
+
+Useful for testing changes locally before submitting upstream.
+
+**Path 3 — copy individual skills into `~/.claude/skills/`:**
 
 ```bash
 git clone https://github.com/franciscomelloc/coding-mentor-pack.git
 cp -r coding-mentor-pack/skills/* ~/.claude/skills/
-cp coding-mentor-pack/glossary.md ~/.claude/skills/coding-mentor-pack-glossary.md
-cp coding-mentor-pack/anti-patterns.md ~/.claude/skills/coding-mentor-pack-anti-patterns.md
 ```
 
-Restart Claude Code. The skills auto-load via Claude Code's skill discovery.
-
-**Path 2 — plugin install (if available in your Claude Code version):**
-
-```bash
-claude plugin install franciscomelloc/coding-mentor-pack
-```
+Then copy `glossary.md` and `anti-patterns.md` somewhere your skills can reference them (next to the skill folders works). Restart Claude Code.
 
 ## Examples
 
